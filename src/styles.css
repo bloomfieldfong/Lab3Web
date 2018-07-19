@@ -1,0 +1,15 @@
+
+.topBar button{
+  background-color: aqua;
+  height: 5rem;
+  width: 20rem;
+  font-size: 2rem;
+}
+
+.topBar button:first-child{
+  border-radius: 1rem 0 0 1rem;
+}
+
+.topBar button:last-child{
+  border-radius: 0 1rem 1rem 0;  
+}
