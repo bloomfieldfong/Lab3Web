@@ -1,9 +1,10 @@
 
 .topBar button{
-  background-color: aqua;
+  background-color: greenyellow;
   height: 5rem;
-  width: 30rem;
+  width: 33%;
   font-size: 2rem;
+
 }
 
 .topBar button:first-child{
@@ -16,18 +17,27 @@
 
 .states{
   height: 4rem;
-  width: 100%;
+  width: 99%;
   background: seashell;
   border-radius: 0.5rem;
   font-size: 25px;
 }
 
 .input{
-  height: 2rem;
-  width: 50rem;
-  margin-top: 30rem;
+  margin-left: 10rem;
+  height: 2.5rem;
+  width: 96rem;
+
+  margin-left: 2rem;
 }
 
-.downBar{
-    margin-top: 50rem;
+.addButton{
+  margin-top: 30rem;
+  margin-left: 100rem;
+  height: 3rem;
+  font-size: 1.5rem;
+}
+
+.addButton .active{
+  background-color: skyblue;
 }

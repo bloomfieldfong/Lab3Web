@@ -5,8 +5,8 @@ const state = {
   filterActive: 0
 };
 
-const listInput = (id, title, isCompleted) => {
-  state.list.push([id,title,isCompleted]);
+const listInput = (title) => {
+  state.list.push([title, true]);
 }
 
 const solicitud = fetch('https://raw.githubusercontent.com/samuelchvez/todos-fake-json-api/master/db.json');
@@ -30,6 +30,7 @@ const render = lState => {
   input.className = 'input';
   const addButton = document.createElement('button');
   addButton.className = 'addButton'
+  addButton.innerHTML = "Add"
 
   downBar.appendChild(addButton);
   downBar.appendChild(input);
@@ -45,6 +46,13 @@ const render = lState => {
       render(lState)
     }
 
+    addButton.onclick = () =>{ 
+      listInput(document.getElementsByClassName('input')[0].value);
+      console.log(document.getElementsByClassName('input')[0].value)
+      console.log(state.list)
+      render(lState)
+    }
+
   }
   root.appendChild(topBar);
   switch(lState.filterActive){
@@ -54,8 +62,7 @@ const render = lState => {
         const states = document.createElement('button');
         states.className = "states"
         states.innerHTML = state.list[x][0]; 
-        root.appendChild(states);
-      
+        root.appendChild(states); 
       }
       break;
     case 1:
@@ -66,7 +73,7 @@ const render = lState => {
           states.className = "states"
           states.innerHTML = state.list[k][0]; 
           root.appendChild(states);
-          console.log(state.list)
+          console.log(state.list);
         }
       }
       break;
@@ -78,11 +85,13 @@ const render = lState => {
           states.className = "states"
           states.innerHTML = state.list[j][0]; 
           root.appendChild(states);
-          console.log(state.list)
+          console.log(state.list);   
         }
       }
       break;
-  }
+  } 
+
+  
   root.appendChild(downBar);  
 }
 
