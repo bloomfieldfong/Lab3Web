@@ -27,7 +27,6 @@
   margin-left: 10rem;
   height: 2.5rem;
   width: 96rem;
-
   margin-left: 2rem;
 }
 
@@ -38,6 +37,6 @@
   font-size: 1.5rem;
 }
 
-.addButton .active{
-  background-color: skyblue;
+.middleBar{
+  overflow-y: auto;
 }

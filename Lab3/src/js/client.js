@@ -6,7 +6,7 @@ const state = {
 };
 
 const listInput = (title) => {
-  state.list.push([title, true]);
+  state.list.push([title, false]);
 }
 
 const solicitud = fetch('https://raw.githubusercontent.com/samuelchvez/todos-fake-json-api/master/db.json');
@@ -31,6 +31,9 @@ const render = lState => {
   const addButton = document.createElement('button');
   addButton.className = 'addButton'
   addButton.innerHTML = "Add"
+
+  const middleBar = document.createElement('div');
+  middleBar.className = 'middleBar';
 
   downBar.appendChild(addButton);
   downBar.appendChild(input);
@@ -62,7 +65,8 @@ const render = lState => {
         const states = document.createElement('button');
         states.className = "states"
         states.innerHTML = state.list[x][0]; 
-        root.appendChild(states); 
+        middleBar.appendChild(states)
+        root.appendChild(middleBar); 
       }
       break;
     case 1:
@@ -72,8 +76,8 @@ const render = lState => {
           const states = document.createElement('button');
           states.className = "states"
           states.innerHTML = state.list[k][0]; 
-          root.appendChild(states);
-          console.log(state.list);
+          middleBar.appendChild(states)
+          root.appendChild(middleBar); 
         }
       }
       break;
@@ -84,8 +88,8 @@ const render = lState => {
           const states = document.createElement('button');
           states.className = "states"
           states.innerHTML = state.list[j][0]; 
-          root.appendChild(states);
-          console.log(state.list);   
+          middleBar.appendChild(states)
+          root.appendChild(middleBar);  
         }
       }
       break;
