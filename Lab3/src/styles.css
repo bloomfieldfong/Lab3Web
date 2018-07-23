@@ -13,3 +13,16 @@
 .topBar button:last-child{
   border-radius: 0 1rem 1rem 0;  
 }
+
+.allStates{
+  height: 4rem;
+  width: 100%;
+  background: seashell;
+  border-radius: 0.5rem;
+  font-size: 25px;
+}
+
+.input{
+  height: 2rem;
+  width: 50rem;
+}
