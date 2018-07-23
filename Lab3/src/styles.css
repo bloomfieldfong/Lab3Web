@@ -2,7 +2,7 @@
 .topBar button{
   background-color: aqua;
   height: 5rem;
-  width: 20rem;
+  width: 30rem;
   font-size: 2rem;
 }
 
@@ -14,7 +14,7 @@
   border-radius: 0 1rem 1rem 0;  
 }
 
-.allStates{
+.states{
   height: 4rem;
   width: 100%;
   background: seashell;
@@ -25,4 +25,9 @@
 .input{
   height: 2rem;
   width: 50rem;
+  margin-top: 30rem;
+}
+
+.downBar{
+    margin-top: 50rem;
 }

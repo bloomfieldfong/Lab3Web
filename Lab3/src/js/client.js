@@ -1,14 +1,27 @@
 const state = {
   filter : ['ALL','COMPLETED','ACTIVE'],
-  list : [[1,"khe"],[0,"gasdd"],[1,'mich'],[2,'ma']],
-  charging : true
+  list : [],
+  charging : true,
+  filterActive: 0
 };
 
-const listInput = (text, i) => {
-  state.list.push([i, text]);
+const listInput = (id, title, isCompleted) => {
+  state.list.push([id,title,isCompleted]);
 }
 
+const solicitud = fetch('https://raw.githubusercontent.com/samuelchvez/todos-fake-json-api/master/db.json');
+solicitud
+  .then(resultado => resultado.json())
+  .then(resultadoJSON =>{
+    for (let i = 0; i < resultadoJSON.length; i += 1) {
+      state.list.push([resultadoJSON[i].title, resultadoJSON[i].isCompleted])
+    }
+    console.log(state.tasks)
+    render(state);});
+
 const render = lState => {
+
+  root.innerHTML = null;
   const topBar = document.createElement('div');
   topBar.className = 'topBar';
 
@@ -27,49 +40,50 @@ const render = lState => {
     filter.innerHTML = state.filter[i];
     topBar.appendChild(filter);
 
-    filter.onclick = () =>{ 
-      switch(i){
-        case 0:
-          root.innerHTML = null;    
-          render(state);
-          for(let x=0; x < state.list.length; x++){
-            const allStates = document.createElement('button');
-            allStates.innerHTML = state.list[x][1];
-            allStates.className = 'allStates';
-            root.appendChild(allStates);
-
-          }
-          break;
-        case 1:
-          root.innerHTML = null;    
-          render(state);
-          for(let k=0; k < state.list.length; k++){
-            if(state.list[k][0] === 1){
-              const completedStates = document.createElement('button');
-              completedStates.innerHTML = state.list[k][1]
-              completedStates.className = 'allStates'
-              root.appendChild(completedStates);
-            }
-          }
-          break;
-        case 2:
-          root.innerHTML = null;    
-          render(state);
-          for(let j=0; j < state.list.length; j++){
-            if(state.list[j][0] === 2){
-              const activeStates = document.createElement('button');
-              activeStates.innerHTML = state.list[j][1]
-              activeStates.className = 'allStates'
-              root.appendChild(activeStates);
-            }
-          }
-          break;
-      }
-      
+    filter.onclick = (self) =>{ 
+      lState.filterActive = i;
+      render(lState)
     }
-  }
 
+  }
   root.appendChild(topBar);
-  root.appendChild(downBar);
+  switch(lState.filterActive){
+    case 0:
+    console.log(state.list)
+      for(let x=0; x < state.list.length; x++){
+        const states = document.createElement('button');
+        states.className = "states"
+        states.innerHTML = state.list[x][0]; 
+        root.appendChild(states);
+      
+      }
+      break;
+    case 1:
+
+      for(let k=0; k < state.list.length; k++){
+        if(state.list[k][1] == true){
+          const states = document.createElement('button');
+          states.className = "states"
+          states.innerHTML = state.list[k][0]; 
+          root.appendChild(states);
+          console.log(state.list)
+        }
+      }
+      break;
+    case 2:
+
+      for(let j=0; j < state.list.length; j++){
+        if(state.list[j][1] == false){
+          const states = document.createElement('button');
+          states.className = "states"
+          states.innerHTML = state.list[j][0]; 
+          root.appendChild(states);
+          console.log(state.list)
+        }
+      }
+      break;
+  }
+  root.appendChild(downBar);  
 }
+
 render(state);
