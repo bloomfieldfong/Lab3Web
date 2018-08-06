@@ -1,0 +1,36 @@
+.buttonRed{
+    margin: 2rem;
+    background: red;
+    border-radius: 15%;
+    font-size: 1.5rem;
+    padding: 2.5rem;
+    margin-left: 3.6rem;
+}
+
+.buttonBlue{
+    margin: 2rem;
+    background: blue;
+    border-radius: 15%;
+    font-size: 1.5rem;
+    padding: 2.5rem;
+}
+
+.buttonYellow{
+    margin: 2rem;
+    background: yellow;
+    border-radius: 15%;
+    font-size: 1.5rem;
+    padding: 2.5rem;
+}
+
+.buttonGreen{
+    margin: 2rem;
+    background:green;
+    border-radius: 15%;
+    font-size: 1.5rem;
+    padding: 2.5rem;
+}
+
+.simonSays {
+    align: center;
+}

@@ -1,0 +1,25 @@
+.light {
+  opacity: 0.2;
+  transition: 0.5s;
+  padding: 1rem;
+  margin: 0.5rem;
+}
+
+.light.on {
+  opacity: 1.0;
+}
+
+.light.small {
+  height: 50px;
+  width: 50px;
+}
+
+.light.medium {
+  height: 100px;
+  width: 100px;
+}
+
+.light.large {
+  height: 200px;
+  width: 200px;
+}
