@@ -79,13 +79,12 @@ class SimonSaysApp extends React .Component {
             console.log(this.state.currentPatern)
             this.state.jugadas++;   
             this.state.currentLight = []
+            this.state.currentPatern = []
         }
 
         if(this.state.currentLight === this.state.currentPatern){
             const {timer} = this.state;
-            clearInterval(timer);
-            this._startRandom()
-            
+            clearInterval(timer); 
         }
             
     }
