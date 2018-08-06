@@ -8,8 +8,8 @@ class SimonSaysApp extends React .Component {
         super(props);
 
         this.state = {
-            currentLight: '0',
-            currentPatern: '0',
+            currentLight: [],
+            currentPatern: [],
             color: ['red', 'green','yellow', 'blue'],
             time: 0,
             colorOn: 0,
@@ -17,40 +17,75 @@ class SimonSaysApp extends React .Component {
     }
 
     _changeRedLight(){
-        console.log("Rojo")
+        console.log("Rojo");
+        console.log(this.state.currentLight);  
+        const {currentLight} = this.state;
+        currentLight.push(0);
         this.setState({
-            currentLight : this.state.currentLight +  '1',
+            currentLight : currentLight,
             colorOn: 0
         })
-        console.log(this.state)  
     }
     _changeGreenLight(){
-        console.log("Green")
+;        console.log("Green");
+        console.log(this.state.currentLight);
+        const {currentLight} = this.state;
+        currentLight.push(1);
         this.setState({
-            currentLight: this.state.currentLight + '2',
+            currentLight : currentLight,
             colorOn: 1
         })
-        console.log(this.state)  
 
     }
     _changeYellowLight(){
-        console.log("Yellow")
+        console.log("Yellow");
+        console.log(this.state.currentLight) ;
+        const {currentLight} = this.state;
+        currentLight.push(2);
         this.setState({
-            currentLight: this.state.currentLight + '3',
+            currentLight : currentLight,
             colorOn: 2
         })
-        console.log(this.state)  
     }
 
     _changeBlueLight(){
-        console.log("Blue")
+        console.log("Blue");
+        console.log(this.state.currentLight) ;
+        const {currentLight} = this.state;
+        currentLight.push(3);
         this.setState({
-            currentLight: this.state.currentLight + '4',
+            currentLight : currentLight,
             colorOn: 3
         })
-        console.log(this.state)  
     }
 
+    _restart(){
+        this.setState({
+            currentLight: [],
+            currentPatern: []
+        })
+    }
+
+    _changeColor(){
+        
+        const {currentPatern} = this.state;
+        const h = Math.floor((Math.random() * 4) )
+        currentPatern.push(h);
+
+        this.setState({
+            currentPatern: currentPatern,
+            colorOn: h
+        })
+        console.log(this.state.colorOn)
+    }
+
+    _startRandom(){
+        const timer = setInterval(()=>this._changeColor(),1000);
+        this.setState({
+          timer, 
+        })
+        
+    }
     
 
     render(){
@@ -62,6 +97,8 @@ class SimonSaysApp extends React .Component {
                 <button className = 'buttonGreen' onClick= {this._changeGreenLight.bind(this)}/>
                 <button className = 'buttonYellow' onClick= {this._changeYellowLight.bind(this)}/>
                 <button className = 'buttonBlue' onClick= {this._changeBlueLight.bind(this)}/>
+                <button className = 'reiniciar' onClick = {this._restart.bind(this)}>Reiniciar</button>
+                <button className = 'iniciar' onClick = {this._startRandom.bind(this)}>Iniciar</button>
             </Fragment>
         )  
     }
