@@ -11,8 +11,8 @@ class SimonSaysApp extends React .Component {
             currentLight: [],
             currentPatern: [],
             color: ['red', 'green','yellow', 'blue'],
-            time: 0,
             colorOn: 0,
+            jugadas: 4,
         };
     }
 
@@ -59,13 +59,6 @@ class SimonSaysApp extends React .Component {
         })
     }
 
-    _restart(){
-        this.setState({
-            currentLight: [],
-            currentPatern: []
-        })
-    }
-
     _changeColor(){
         
         const {currentPatern} = this.state;
@@ -75,18 +68,36 @@ class SimonSaysApp extends React .Component {
         this.setState({
             currentPatern: currentPatern,
             colorOn: h
+            
         })
-        console.log(this.state.colorOn)
+
+        
+        if(this.state.jugadas == this.state.currentPatern.length){
+            console.log('hey')
+            const {timer} = this.state;
+            clearInterval(timer);
+            console.log(this.state.currentPatern)
+            this.state.jugadas++;   
+            this.state.currentLight = []
+        }
+
+        if(this.state.currentLight === this.state.currentPatern){
+            const {timer} = this.state;
+            clearInterval(timer);
+            this._startRandom()
+            
+        }
+            
     }
+
 
     _startRandom(){
         const timer = setInterval(()=>this._changeColor(),1000);
         this.setState({
           timer, 
         })
-        
+
     }
-    
 
     render(){
         const { color, colorOn } = this.state;
@@ -97,8 +108,7 @@ class SimonSaysApp extends React .Component {
                 <button className = 'buttonGreen' onClick= {this._changeGreenLight.bind(this)}/>
                 <button className = 'buttonYellow' onClick= {this._changeYellowLight.bind(this)}/>
                 <button className = 'buttonBlue' onClick= {this._changeBlueLight.bind(this)}/>
-                <button className = 'reiniciar' onClick = {this._restart.bind(this)}>Reiniciar</button>
-                <button className = 'iniciar' onClick = {this._startRandom.bind(this)}>Iniciar</button>
+                <button className = 'reiniciar' onClick = {this._startRandom.bind(this)}>Iniciar</button>
             </Fragment>
         )  
     }
