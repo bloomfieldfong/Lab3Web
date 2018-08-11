@@ -73,7 +73,7 @@ class SimonSaysApp extends React .Component {
 
         
         if(this.state.jugadas == this.state.currentPatern.length){
-            console.log('hey')
+            
             const {timer} = this.state;
             clearInterval(timer);
             console.log(this.state.currentPatern)
@@ -85,7 +85,9 @@ class SimonSaysApp extends React .Component {
         if(this.state.currentLight === this.state.currentPatern){
             const {timer} = this.state;
             clearInterval(timer); 
+            consol.log('sfa')
         }
+
             
     }
 
