@@ -13,6 +13,15 @@ class WeatherApp extends Component {
     }
 
 
+  colectData = (url) =>{
+      fetch('http://history.openweathermap.org/data/2.5/history/city?q=London,UK')
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(myJson) {
+      console.log(myJson);
+    });
+  }
 
 
   render() {
